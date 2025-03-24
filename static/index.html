@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Погодное приложение с обновлениями в реальном времени" />
+    <meta name="keywords" content="погода, прогноз, температура, климат" />
+    <title>WeatherToday 2.0 Static</title>
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <div class="weather-container">
+      <!-- Поиск города -->
+      <div class="search-bar">
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Введите название города..." 
+        />
+        <button id="search-button" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      
+      <!-- Сообщение об ошибке -->
+      <div id="error-message" class="error-message" style="display: none;">
+        <p>Город не найден. Пожалуйста, попробуйте ещё раз.</p>
+      </div>
+      
+      <!-- Переключатель единиц температуры -->
+      <div class="units-toggle">
+        <span>°C</span>
+        <label class="toggle">
+          <input type="checkbox" id="temp-toggle">
+          <span class="slider round"></span>
+        </label>
+        <span>°F</span>
+      </div>
+      
+      <!-- Основная информация о погоде -->
+      <div id="weather-card" class="weather-card glass">
+        <div class="weather-info">
+          <div class="main-info">
+            <h2 id="city-name" class="city-name">Москва</h2>
+            <p id="country" class="country">RU</p>
+            <img id="weather-icon" src="https://openweathermap.org/img/wn/01d@2x.png" alt="Иконка погоды">
+            <p id="temp" class="temp">25°</p>
+            <p id="weather-description" class="weather-description">Ясно</p>
+            <p id="feels-like">Ощущается как: 27°</p>
+          </div>
+          
+          <div class="details">
+            <div class="detail-item">
+              <div class="detail-label">Влажность</div>
+              <div id="humidity" class="detail-value">65%</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Ветер</div>
+              <div id="wind-speed" class="detail-value">5 м/с</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Давление</div>
+              <div id="pressure" class="detail-value">755 мм рт.ст.</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Видимость</div>
+              <div id="visibility" class="detail-value">10 км</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Восход</div>
+              <div id="sunrise" class="detail-value">05:12</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Закат</div>
+              <div id="sunset" class="detail-value">19:48</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Прогноз -->
+        <div class="forecast">
+          <div class="forecast-tabs">
+            <button class="forecast-tab active" data-tab="hourly">Почасовой</button>
+            <button class="forecast-tab" data-tab="daily">На 5 дней</button>
+          </div>
+          
+          <div id="hourly-forecast" class="hourly-forecast">
+            <!-- Сюда добавляются элементы почасового прогноза -->
+          </div>
+          
+          <div id="daily-forecast" class="daily-forecast" style="display: none;">
+            <!-- Сюда добавляются элементы ежедневного прогноза -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Избранные города -->
+      <div class="favorites-list">
+        <h3 class="favorites-title">Избранные города</h3>
+        <div id="favorite-items" class="favorite-items">
+          <!-- Сюда добавляются избранные города -->
+        </div>
+      </div>
+      
+      <!-- Индикатор загрузки -->
+      <div id="loading" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+    
+    <!-- Подключение скриптов -->
+    <script src="scripts/app.js"></script>
+  </body>
+</html>

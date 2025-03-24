@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Приложение для прогноза погоды с обновлениями в реальном времени">
+    <meta name="keywords" content="погода, прогноз, температура, климат">
+    <title>WeatherToday 1.0.1 </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/search.css">
+    <link rel="stylesheet" href="style/weather.css">
+    <link rel="stylesheet" href="style/forecast.css">
+    <link rel="stylesheet" href="style/utilities.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+<body>
+    <main class="container">
+        <div class="search-container">
+            <label for="input-box" class="visually-hidden">Поиск города</label>
+            <input 
+                type="text" 
+                id="input-box" 
+                placeholder="Введите название города..." 
+                autocomplete="off"
+                aria-label="Поиск города"
+            >
+            <button id="search-button" aria-label="Поиск">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="error-message" role="alert" style="display: none;">
+            <p>Город не найден. Пожалуйста, попробуйте ещё раз.</p>
+        </div>
+        <div class="weather-body" role="main" aria-live="polite">
+            <div class="location-details">
+                <h1 class="city" id="city">-</h1>
+                <div class="date" id="date">-</div>
+            </div>
+            <section class="weather-details">
+                <div class="temp-container">
+                    <img id="weather-icon" alt="Иконка погоды" src="" aria-hidden="true">
+                    <div class="temperature" id="temp">-</div>
+                    <div class="weather" id="weather">-</div>
+                </div>
+                <div class="temp-range">
+                    <span id="min-max">-</span>
+                </div>
+                <div class="weather-info">
+                    <div class="info-item">
+                        <i class="fas fa-tint" aria-hidden="true"></i>
+                        <span>Влажность</span>
+                        <p id="humidity">-</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-wind" aria-hidden="true"></i>
+                        <span>Скорость ветра</span>
+                        <p id="wind-speed">-</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i>
+                        <span>Давление</span>
+                        <p id="pressure">-</p>
+                    </div>
+                </div>
+            </section>
+            <button id="toggle-forecast-button" type="button" aria-label="Показать прогноз на неделю">
+                Прогноз на ближайшие дни <i class="fas fa-chevron-down"></i>
+            </button>
+            <section class="week-forecast" id="week-forecast" style="display: none;" aria-labelledby="week-forecast-heading">
+                <h2 id="week-forecast-heading">Прогноз на ближайшие дни</h2>
+                <div class="forecast-list" id="forecast-list">
+                    <!-- Прогноз на неделю будет вставлен сюда -->
+                </div>
+            </section>
+        </div>
+        <div class="loading-screen" style="display: none;">
+            <div class="spinner"></div>
+            <p>Загрузка информации о погоде...</p>
+        </div>
+    </main>
+    <script src="script.js" defer></script>  
+</body>
+</html>
+
